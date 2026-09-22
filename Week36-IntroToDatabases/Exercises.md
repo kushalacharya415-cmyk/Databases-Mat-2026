@@ -205,21 +205,28 @@ Answer the following in your own words (write 2–3 sentences per point):
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _the three specfic probles in this case are
+> concurrency issues: when many staff try to edit the inventory or prices ar the same time, some changes will overwrite others people work, and data get lost
+>
+> Data Redundancy: Product info is scattered in many files, so a sale price might update on website but stay high in inventory sheet, which confuses customers.
+> Lack of Integrity: Spreadsheets do not have strict rules, so someone can easily type bad data like negative prices or missing names without any error._
 
 2. List **3 benefits** of switching to a database system, explaining how each one solves a problem from your list above.
 
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _the three benefits are
+> Concurrency Control: PostgreSQL manages multiple users at same time safely, so staff can work together without deleting each other changes.
+> Single Source of Truth: Storing each price or product fact in only one place stops all the mismatched prices between different department sheets.
+>automated constraints: Setting rules like price must be bigger then zero means the database will instantly reject wrong data entries. _
 
 3. Explain the three-schema architecture in your own words. Why is the separation into three levels useful?
 
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _The three schema architecture splits database into three levels: External level (custom views for different teams like marketing), Conceptual level (the full logical structure), and Internal level (how data is actually saved on hard drive). This is useful because it gives data independence, meaning you can change physical storage or add columns without breaking the user apps._
 
 ---
 
@@ -235,7 +242,7 @@ _(See Section 1 of this week's Theory material.)_
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _Data is just raw and unprocessed facts with no context, but information is data that is organized so it actually makes sense. For example, ("TrailMaster X4", 149.99, 12) is just raw data, but saying "The product TrailMaster X4 costs 149.99 euros and we have 12 in stock" is useful information._
 
 **Q2.** List and explain three disadvantages of file-based data management systems. For each, describe how it would affect TrailShop specifically.
 _(See Section 2 of this week's Theory material.)_
@@ -243,7 +250,7 @@ _(See Section 2 of this week's Theory material.)_
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _The bad things are data redundancy (which creates conflicting prices between inventory and web sheets), data isolation (makes it hard to match customer files with order texts), and program-data dependence (where changing a CSV column breaks all the custom scripts)._
 
 **Q3.** What is a DBMS? List four of its core functions.
 _(See Sections 3 and 4 of this week's Theory material.)_
@@ -251,7 +258,7 @@ _(See Sections 3 and 4 of this week's Theory material.)_
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _A DBMS is software that sits between programs and stored data to help manage it. Four main functions are Data Definition (DDL), Data Manipulation (DML), Concurrency Control, and Backup and Recovery._
 
 **Q4.** Explain program-data independence with a concrete example. Why is it important?
 _(See Section 5.2 of this week's Theory material.)_
@@ -259,7 +266,7 @@ _(See Section 5.2 of this week's Theory material.)_
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _Program-data independence means you can change how database is structured without breaking the apps that use it. For example, if you add a weight column to products table, old website queries still work fine. It is important because it saves time and stops code from breaking when database changes._
 
 **Q5.** What is metadata? Give two examples of metadata for a `products` table.
 _(See Section 8 of this week's Theory material.)_
@@ -267,7 +274,7 @@ _(See Section 8 of this week's Theory material.)_
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _Metadata is basically data about data that describes how the database is built. Two examples for products table are the table name itself and the data types of its columns like price being numeric._
 
 **Q6.** What is the three-schema architecture? Name and briefly describe each level.
 _(See Section 3.3 of this week's Theory material.)_
@@ -275,7 +282,7 @@ _(See Section 3.3 of this week's Theory material.)_
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _It is a framework that separates database into three layers: External level (user views), Conceptual level (the whole logical design), and Internal level (how data is physically stored on disk)._
 
 **Q7.** Explain the difference between logical data independence and physical data independence.
 _(See Section 3.4 of this week's Theory material.)_
@@ -283,7 +290,7 @@ _(See Section 3.4 of this week's Theory material.)_
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _Logical independence let you change the conceptual schema like adding new columns without breaking user views. Physical independence let you change how data is stored on disk like moving to a faster drive without changing the logical schema._
 
 **Q8.** What is a transaction? Why is atomicity important? Give a TrailShop example.
 _(See Section 5.5 of this week's Theory material.)_
@@ -291,7 +298,7 @@ _(See Section 5.5 of this week's Theory material.)_
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _A transaction is a group of steps that must all finish together or nothing happens. Atomicity is important because if something fails halfway, it rolls back everything. For TrailShop, when someone buys an item, updating the order and lowering the stock must happen together so stock does not drop if payment fails._
 
 ### True/False
 
@@ -306,7 +313,11 @@ For each statement, write **True** or **False** and correct any false statements
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write True/False and corrections for all five statements above.)_
+> _False. A DBMS stores both data and metadata about its structure.
+> True.
+> True.
+> False: PostgreSQL is a free and open-source database system.
+> False. The conceptual level describes the logical structure, while the internal level describes how data is stored physically on disk._
 
 ### Matching Exercise
 
@@ -343,16 +354,16 @@ Match each term (1–10) with its definition (A–J).
 >
 > | #   | Your Match |
 > | --- | ---------- |
-> | 1   |            |
-> | 2   |            |
-> | 3   |            |
-> | 4   |            |
-> | 5   |            |
-> | 6   |            |
-> | 7   |            |
-> | 8   |            |
-> | 9   |            |
-> | 10  |            |
+> | 1   |    f        |
+> | 2   |    h        |
+> | 3   |    b        |
+> | 4   |    a        |
+> | 5   |    c        |
+> | 6   |    g        |
+> | 7   |    d        |
+> | 8   |    e        |
+> | 9   |    i        |
+> | 10  |    j        |
 
 ---
 
@@ -378,7 +389,14 @@ Connect to PostgreSQL using psql and complete the following. Write down the comm
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Document the commands you used and summarize the output for each step.)_
+> _1. List the databases command: \l
+> 2. Connect to the database command: \c trialshop
+> 3. List tables: commands: \dt
+> 4. FInd psql meta commands
+> describing a table \d tablename
+> listing user/roles: \du
+> showing help for an SQL command \h SQL_COMMAND
+> 5. QUIT psql command : \q_
 
 ### Exercise 3.2: Explore the System Catalog
 
@@ -402,7 +420,7 @@ Why does the last query return no rows? What would you expect to see after creat
 > [!NOTE]
 > ***Your Answer***
 >
-> _(Write your answer here.)_
+> _It returns nothing because we have not created any tables yet for Week 36. Later in next weeks when we create tables, they will show up here._
 
 ### Exercise 3.3: Create and Drop a Test Database
 
