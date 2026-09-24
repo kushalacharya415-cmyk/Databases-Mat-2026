@@ -114,13 +114,14 @@ Think about rules for customers, orders, and categories — not just products.
 > [!NOTE]
 > ***Your Answer***
 >
-> *| Business Rule                                 | Constraint Type | Table.Column             | SQL
-| Customer emails must be unique                | UNIQUE          | customers.email          | email VARCHAR(255) UNIQUE                                          |
-| Order status must be one of the allowed types | CHECK           | orders.status            | CHECK (status IN ('pending', 'shipped', 'delivered', 'cancelled')) |
-| Product stock cannot be negative              | CHECK           | products.stock_quantity  | CHECK (stock_quantity >= 0)                                        |
-| Every order needs a real customer             | FOREIGN KEY     | orders.customer_id       | FOREIGN KEY (customer_id) REFERENCES customers(customer_id)        |
-| Category names must be unique                 | UNIQUE          | categories.category_name | category_name VARCHAR(50) UNIQUE                                   |
-*
+> * | Business Rule | Constraint Type | Table.Column | SQL |
+| :--- | :--- | :--- | :--- |
+| Every product must have a price greater than zero | CHECK | products.price | `CHECK (price > 0)` |
+| Customer emails must be unique | UNIQUE | customers.email | `UNIQUE (email)` |
+| Order status must be one of the allowed types | CHECK | orders.status | `CHECK (status IN ('pending', 'shipped', 'delivered', 'cancelled'))` |
+| Product stock cannot be negative | CHECK | products.stock_quantity | `CHECK (stock_quantity >= 0)` |
+| Every order needs a real customer | FOREIGN KEY | orders.customer_id | `FOREIGN KEY (customer_id) REFERENCES customers(customer_id)` |
+| Category names must be unique | UNIQUE | categories.category_name | `UNIQUE (category_name)` |*
 >
 >
 >
