@@ -115,7 +115,7 @@ Think about rules for customers, orders, and categories — not just products.
 > ***Your Answer***
 >
 > *| Business Rule | Constraint Type | Table.Column | SQL |
-| :--- | :--- | :--- | :--- |
+| --- | --- | --- | --- |
 | Every product must have a price greater than zero | CHECK | products.price | `CHECK (price > 0)` |
 | Customer emails must be unique | UNIQUE | customers.email | `UNIQUE (email)` |
 | Order status must be one of the allowed types | CHECK | orders.status | `CHECK (status IN ('pending', 'shipped', 'delivered', 'cancelled'))` |
@@ -492,7 +492,7 @@ Given these business rules for a **bookstore database**, write the `CREATE TABLE
 
 *(Hint: you'll need at least 4 tables, including a junction table for the M:N relationship.)*
 my answer 
-*CREATE TABLE genres (
+CREATE TABLE genres (
     genre_id INTEGER PRIMARY KEY,
     genre_name VARCHAR(50) NOT NULL UNIQUE
 );
@@ -515,7 +515,7 @@ CREATE TABLE book_authors (
     isbn VARCHAR(13) REFERENCES books(isbn) ON DELETE CASCADE,
     author_id INTEGER REFERENCES authors(author_id) ON DELETE CASCADE,
     PRIMARY KEY (isbn, author_id)
-);*
+);
 ---
 
 ## Part 4: Design Exercise — Library System
@@ -580,7 +580,7 @@ A small public library needs a database. Here is a description of their requirem
 >
 6. **Write the CREATE TABLE statements** for at least the `books`, `copies`, and `borrowings` tables with full constraints.
 my answer
-*CREATE TABLE genres (
+CREATE TABLE genres (
     genre_id INTEGER PRIMARY KEY,
     genre_name VARCHAR(50) NOT NULL UNIQUE
 );
@@ -613,7 +613,7 @@ CREATE TABLE borrowings (
     return_date DATE,
     CHECK (due_date >= borrow_date),
     CHECK (return_date IS NULL OR return_date >= borrow_date)
-);*
+);
 ---
 
 ## Submission Checklist
