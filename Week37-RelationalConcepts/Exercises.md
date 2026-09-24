@@ -114,7 +114,7 @@ Think about rules for customers, orders, and categories — not just products.
 > [!NOTE]
 > ***Your Answer***
 >
-> * | Business Rule | Constraint Type | Table.Column | SQL |
+> *| Business Rule | Constraint Type | Table.Column | SQL |
 | :--- | :--- | :--- | :--- |
 | Every product must have a price greater than zero | CHECK | products.price | `CHECK (price > 0)` |
 | Customer emails must be unique | UNIQUE | customers.email | `UNIQUE (email)` |
